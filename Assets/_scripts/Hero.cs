@@ -12,7 +12,7 @@ public class Hero : MonoBehaviour {
     public float pitchMult = 30;
 
     [Header("Set Dynamically")]
-    public float shieldlevel = 1;
+    public float shieldLevel = 1;
 
     public void Awake()
     {
@@ -37,6 +37,6 @@ public class Hero : MonoBehaviour {
         pos.y += yAxis * speed * Time.deltaTime;
         transform.position = pos;
 
-        transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult);
+        transform.rotation = Quaternion.Euler(yAxis * pitchMult, xAxis * rollMult, 0);
     }
 }
