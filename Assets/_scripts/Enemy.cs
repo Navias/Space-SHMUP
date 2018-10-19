@@ -46,13 +46,13 @@ public class Enemy : MonoBehaviour {
         pos = tempPos;
     }
 
-    private void OnCollisionEnter(Collision coll)
+     void OnCollisionEnter(Collision coll)
     {
         GameObject otherGO = coll.gameObject;
         if(otherGO.tag == "ProjectileHero")
         {
-            Destroy(otherGO);
-            Destroy(gameObject);
+            Destroy( otherGO );
+            Destroy( gameObject );
         }
         else
         {

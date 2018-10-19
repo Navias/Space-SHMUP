@@ -23,7 +23,7 @@ public class Main : MonoBehaviour {
     public void SpawnEnemy()
     {
         int ndx = Random.Range(0, prefabEnemies.Length);
-        GameObject go = Instantiate<GameObject>(prefabEnemies[ ndx ]);
+        GameObject go = Instantiate<GameObject>( prefabEnemies[ ndx ] );
 
         float enemyPadding = enemyDefaultPadding;
         if(go.GetComponent<BoundsCheck>() != null)
@@ -41,7 +41,7 @@ public class Main : MonoBehaviour {
 
     }
 
-    public void DelayedRestart( float delay)
+    public void DelayedRestart( float delay )
     {
         Invoke("Restart", delay);
     }
