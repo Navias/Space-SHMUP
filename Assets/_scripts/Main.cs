@@ -5,19 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour {
     static public Main S;
+    static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     [Header("Set in Inspector")]
     public GameObject[] prefabEnemies;
     public float enemySpawnPerSecond = 0.5f;
     public float enemyDefaultPadding = 1.5f;
-
-    private BoundsCheck bndCheck;
+    public WeaponDefinition[] weaponDefinitions;
+    // should be private but giving issues
+    public BoundsCheck bndCheck;
 
     private void Awake()
     {
         S = this;
         bndCheck = GetComponent<BoundsCheck>();
         Invoke("SpawnEnemy", 1f / enemySpawnPerSecond);
+
+        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
+        foreach ( WeaponDefinition def in weaponDefinitions)
+        {
+            WEAP_DICT[def.type] = def;
+        }
     }
 
     public void SpawnEnemy()
@@ -49,6 +57,14 @@ public class Main : MonoBehaviour {
     public void Restart()
     {
         SceneManager.LoadScene("_Scene_0");
+    }
+    static public WeaponDefinition GetWeaponDefinition(WeaponType wt)
+    {
+        if (WEAP_DICT.ContainsKey(wt))
+        {
+            return (WEAP_DICT[wt]);
+        }
+        return (new WeaponDefinition());
     }
 
 }
