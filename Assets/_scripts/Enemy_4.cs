@@ -101,7 +101,7 @@ public class Enemy_4 : Enemy
                 }
              
                 prtHit.health -= Main.GetWeaponDefinition(p.type).damageOnHit;
-                ShowLocalizedDamage(prtHit.mat);
+                //ShowLocalizedDamage(prtHit.mat);
                 if (prtHit.health <= 0)
                 {
          
